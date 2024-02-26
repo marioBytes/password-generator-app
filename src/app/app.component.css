@@ -1,0 +1,14 @@
+h1 {
+  font-size: 32px;
+  line-height: 43px;
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 31px;
+}
+
+p, span, a {
+  font-size: 18px;
+  line-height: 23px;
+}
