@@ -1,0 +1,8 @@
+.bar-list div {
+  height: 28px;
+  width: 10px;
+}
+
+.bar {
+  border: 2px solid white;
+}
