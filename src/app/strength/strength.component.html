@@ -1,52 +1,46 @@
-<div class="bg-dark-grey py-10">
-  <div
-    class="flex justify-between items-center bg-very-dark-grey px-7 py-3 max-w-md mx-auto my-3"
-  >
-    <div>
-      <p class="text-grey font-semibold">STRENGTH</p>
-    </div>
-    <div class="flex flex-row items-center gap-3.5">
-      <h2 class="text-2xl uppercase">
-        {{ getStrength() }}
-      </h2>
-      <div class="flex gap-2 h-7 bar-list">
-        <div
-          [ngClass]="
-            ['bg-red', 'bg-orange', 'bg-yellow', 'bg-neon-green'].includes(
-              getClassOf()
-            )
-              ? getClassOf()
-              : 'bar'
-          "
-        ></div>
-        <div
-          [ngClass]="
-            ['bg-orange', 'bg-yellow', 'bg-neon-green'].includes(
-              getClassOf()
-            ) &&
-            (getStrength() === 'weak' ||
-              getStrength() === 'medium' ||
-              getStrength() === 'strong')
-              ? getClassOf()
-              : 'bar'
-          "
-        ></div>
-        <div
-          [ngClass]="
-            ['bg-yellow', 'bg-neon-green'].includes(getClassOf()) &&
-            (getStrength() === 'medium' || getStrength() === 'strong')
-              ? getClassOf()
-              : 'bar'
-          "
-        ></div>
-        <div
-          [ngClass]="getClassOf() === 'bg-neon-green' ? getClassOf() : 'bar'"
-        ></div>
-      </div>
+<div
+  class="flex justify-between items-center bg-very-dark-grey md:px-7 py-3 px-4"
+>
+  <div>
+    <p class="text-grey font-semibold">STRENGTH</p>
+  </div>
+  <div class="flex flex-row items-center gap-3.5">
+    <h2 class="sm:text-2xl uppercase text-xl font-semibold">
+      {{ strength }}
+    </h2>
+    <div class="flex gap-2 h-7 bar-list text-base">
+      <div
+        [ngClass]="
+          ['bg-red', 'bg-orange', 'bg-yellow', 'bg-neon-green'].includes(
+            getClassOf()
+          )
+            ? getClassOf()
+            : 'bar'
+        "
+      ></div>
+      <div
+        [ngClass]="
+          ['bg-orange', 'bg-yellow', 'bg-neon-green'].includes(
+            getClassOf()
+          ) &&
+          (strength === 'weak' ||
+            strength === 'medium' ||
+            strength === 'strong')
+            ? getClassOf()
+            : 'bar'
+        "
+      ></div>
+      <div
+        [ngClass]="
+          ['bg-yellow', 'bg-neon-green'].includes(getClassOf()) &&
+          (strength === 'medium' || strength === 'strong')
+            ? getClassOf()
+            : 'bar'
+        "
+      ></div>
+      <div
+        [ngClass]="getClassOf() === 'bg-neon-green' ? getClassOf() : 'bar'"
+      ></div>
     </div>
   </div>
-</div>
-
-<div>
-  <button (click)="passwordStrength()">Click Me</button> | {{ strength }}
 </div>

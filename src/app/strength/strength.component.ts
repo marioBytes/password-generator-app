@@ -1,54 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { ButtonComponent } from '../button/button.component';
 
 @Component({
   selector: 'app-strength',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ButtonComponent],
   templateUrl: './strength.component.html',
   styleUrl: './strength.component.css',
 })
 export class StrengthComponent {
-  strength: number = 0;
-  strengthString: string = '';
-
-  passwordStrength(): string {
-    this.generateNumber();
-
-    if (this.strength < 3) {
-      this.strengthString = 'too weak!';
-    } else if (this.strength >= 3 && this.strength <= 5) {
-      this.strengthString = 'weak';
-    } else if (this.strength > 5 && this.strength <= 8) {
-      this.strengthString = 'medium';
-    } else {
-      this.strengthString = 'strong';
-    }
-
-    return this.strengthString;
-  }
-
-  generateNumber(): number {
-    this.strength = Math.floor(Math.random() * (10 - 1) + 1);
-
-    return this.strength;
-  }
-
-  getStrength(): string {
-    return this.strengthString;
-  }
+  @Input() strength: string = '';
 
   getClassOf(): string {
-    if (this.strengthString === 'too weak!') {
+    if (this.strength === 'too weak!') {
       return 'bg-red';
-    } else if (this.strengthString === 'weak') {
+    } else if (this.strength === 'weak') {
       return 'bg-orange';
-    } else if (this.strengthString === 'medium') {
+    } else if (this.strength === 'medium') {
       return 'bg-yellow';
-    } else if (this.strengthString === 'strong') {
-      return 'bg-neon-green';
     }
 
-    return '';
+    return 'bg-neon-green';
   }
 }
