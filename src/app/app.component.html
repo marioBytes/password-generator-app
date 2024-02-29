@@ -1,3 +1,10 @@
 <main>
-  <app-strength></app-strength>
+  <div class="h-screen max-w-xl flex items-center justify-center mx-auto">
+    <app-card class="w-full">
+      <div class="flex flex-col gap-6">
+        <app-strength strength="{{ strength }}"></app-strength>
+        <app-button (onClick)="generatePasswordStrength()">Generate &#10140;</app-button>
+      </div>
+    </app-card>
+  </div>
 </main>
