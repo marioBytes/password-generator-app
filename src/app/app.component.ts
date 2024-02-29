@@ -4,11 +4,18 @@ import { RouterOutlet } from '@angular/router';
 import { ButtonComponent } from './button/button.component';
 import { CardComponent } from './card/card.component';
 import { StrengthComponent } from './strength/strength.component';
+import { CheckboxComponent } from './checkbox/checkbox.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ButtonComponent, CardComponent, StrengthComponent],
+  imports: [
+    RouterOutlet,
+    ButtonComponent,
+    CardComponent,
+    CheckboxComponent,
+    StrengthComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
@@ -17,10 +24,10 @@ export class AppComponent {
 
   charLength: number = 10;
 
-  includeUpper: boolean = true;
-  includeLower: boolean = true;
-  includeNumbers: boolean = true;
-  includeSymbols: boolean = false;
+  includeUpper: string = 'true';
+  includeLower: string = 'true';
+  includeNumbers: string = 'true';
+  includeSymbols: string = 'false';
 
   strength: string = 'strong';
   strengthNum: number = 9;
