@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { Clipboard } from '@angular/cdk/clipboard'
 
 import { ButtonComponent } from './button/button.component';
 import { CardComponent } from './card/card.component';
+import { InputComponent } from './input/input.component';
 import { StrengthComponent } from './strength/strength.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
 
@@ -14,13 +16,16 @@ import { CheckboxComponent } from './checkbox/checkbox.component';
     ButtonComponent,
     CardComponent,
     CheckboxComponent,
+    InputComponent,
     StrengthComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  password: string = 'PTx1f5DaFX';
+  constructor(private clipboard: Clipboard) {}
+
+  password: string = '';
 
   charLength: number = 10;
 
@@ -32,8 +37,10 @@ export class AppComponent {
   strength: string = 'strong';
   strengthNum: number = 9;
 
+
   generatePassword(): string {
     this.generateNumber();
+    this.password = 'PTx1f5DaFX';
 
     if (this.strengthNum < 3) {
       this.strength = 'too weak!';
@@ -57,5 +64,9 @@ export class AppComponent {
     console.log(this.strengthNum);
 
     return this.strengthNum;
+  }
+
+  copyToClipboard(): any {
+    this.clipboard.copy(this.password);
   }
 }
