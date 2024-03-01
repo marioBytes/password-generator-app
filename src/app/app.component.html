@@ -8,7 +8,9 @@
             (click)="copyToClipboard()"
             class="p-2"
             [title]="
-              password === '' && 'Generate Password to copy to clipboard'
+              password === ''
+                ? 'Generate Password to copy to clipboard'
+                : 'Click to copy password to clipboard'
             "
           >
             <svg width="21" height="24" xmlns="http://www.w3.org/2000/svg">
