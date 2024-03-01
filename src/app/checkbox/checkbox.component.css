@@ -1,0 +1,32 @@
+input[type='checkbox'] {
+  appearance: none;
+  --webkit-appearance: none;
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid white;
+  display: grid;
+  place-content: center;
+  background-color: transparent;
+}
+
+input[type='checkbox']::after {
+  content: '';
+  width: 1rem;
+  height: 1rem;
+  transform: scale(0);
+  background-color: transparent;
+  clip-path: polygon(17% 54%, 28% 43%, 38% 54%, 70% 22%, 81% 33%, 38% 75%, 17% 54%);
+}
+
+input[type='checkbox']:checked {
+  background-color: #A4FFAF;
+  border-color: #A4FFAF;
+}
+
+input[type='checkbox']::after {
+  transform: scale(1);
+}
+
+input[type='checkbox']:checked::after {
+  background-color: black;
+}
