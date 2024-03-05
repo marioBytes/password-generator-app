@@ -1,0 +1,43 @@
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 0.5rem;
+  background: #18171F;
+  outline: none;
+
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1.75rem;
+  height: 1.75rem;
+  background: white;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.slider::-moz-range-thumb {
+  width: 1.75rem;
+  height: 1.75rem;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/** FF*/
+input[type="range"]::-moz-range-progress {
+  background-color: #A4FFAF;
+  height: 0.5rem;
+}
+/* IE*/
+input[type="range"]::-ms-fill-lower {
+  background-color: #A4FFAF;
+  height: 0.5rem;
+}

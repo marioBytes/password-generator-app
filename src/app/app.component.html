@@ -24,6 +24,13 @@
       </app-card>
       <app-card>
         <div class="flex flex-col gap-4">
+          <div class="flex flex-col gap-4">
+            <div class="flex flex-row justify-between">
+              <h3>Character Length</h3>
+              <h3>{{ charLength }}</h3>
+            </div>
+            <app-slider (onChange)="sliderOnChange($event)"></app-slider>
+          </div>
           <div class="flex flex-col gap-3">
             <app-checkbox
               name="includeUpper"

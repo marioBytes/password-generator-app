@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Clipboard } from '@angular/cdk/clipboard'
+import { Clipboard } from '@angular/cdk/clipboard';
 
 import { ButtonComponent } from './button/button.component';
 import { CardComponent } from './card/card.component';
-import { InputComponent } from './input/input.component';
-import { StrengthComponent } from './strength/strength.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
+import { InputComponent } from './input/input.component';
+import { SliderComponent } from './slider/slider.component';
+import { StrengthComponent } from './strength/strength.component';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +18,7 @@ import { CheckboxComponent } from './checkbox/checkbox.component';
     CardComponent,
     CheckboxComponent,
     InputComponent,
+    SliderComponent,
     StrengthComponent,
   ],
   templateUrl: './app.component.html',
@@ -27,7 +29,7 @@ export class AppComponent {
 
   password: string = '';
 
-  charLength: number = 10;
+  charLength: string = '10';
 
   includeUpper: string = 'true';
   includeLower: string = 'true';
@@ -68,5 +70,9 @@ export class AppComponent {
 
   copyToClipboard(): any {
     this.clipboard.copy(this.password);
+  }
+
+  sliderOnChange(value: string) {
+    this.charLength = value;
   }
 }
