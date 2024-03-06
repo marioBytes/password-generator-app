@@ -37,11 +37,12 @@
                 [name]="option.name"
                 [label]="option.label"
                 [checked]="option.checked"
+                [disabled]="option.disabled"
                 (onChange)="onCheck($event)"
               ></app-checkbox>
             </li>
           </div>
-          <app-strength strength="{{ strength }}"></app-strength>
+          <app-strength strength="{{ getStrength() }}"></app-strength>
           <app-button (onClick)="generatePassword()"
             >Generate &#10140;</app-button
           >
