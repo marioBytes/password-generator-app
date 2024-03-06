@@ -1,7 +1,7 @@
 <main>
   <div class="h-screen max-w-xl flex items-center justify-center mx-auto px-4">
     <div class="w-full flex flex-col gap-4">
-      <h3 class="text-grey font-medium text-center">Password Generator</h3>
+      <h3 class="text-grey font-bold text-center">Password Generator</h3>
       <app-card>
         <app-input placeholder="P4$5W0rD!" value="{{ password }}">
           <button
@@ -25,9 +25,9 @@
       <app-card>
         <div class="flex flex-col gap-4">
           <div class="flex flex-col gap-4">
-            <div class="flex flex-row justify-between">
-              <h3>Character Length</h3>
-              <h3>{{ charLength }}</h3>
+            <div class="flex flex-row justify-between items-center font-bold">
+              <p>Character Length</p>
+              <h3 class="text-neon-green text-2xl">{{ charLength }}</h3>
             </div>
             <app-slider (onChange)="sliderOnChange($event)"></app-slider>
           </div>

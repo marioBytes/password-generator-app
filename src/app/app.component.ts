@@ -52,6 +52,7 @@ export class AppComponent {
   generatePassword(): string {
     this.generateNumber();
     this.password = 'PTx1f5DaFX';
+    console.log(Array(10).fill("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz~!@-#$").map(function(x) { return x[Math.floor(Math.random() * x.length)] }).join(''))
 
     if (this.strengthNum < 3) {
       this.strength = 'too weak!';
