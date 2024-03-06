@@ -1,4 +1,4 @@
 <label class="flex items-center gap-4 font-bold">
-  <input type="checkbox" id="{{ name }}" name="{{ name }}" [checked]="checked" (click)="onCheck($event)" />
+  <input type="checkbox" id="{{ name }}" name="{{ name }}" [checked]="checked" (click)="onCheck($event)" [disabled]="disabled" />
   {{ label }}
 </label>
