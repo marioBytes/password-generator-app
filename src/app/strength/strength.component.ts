@@ -11,14 +11,35 @@ import { ButtonComponent } from '../button/button.component';
   styleUrl: './strength.component.css',
 })
 export class StrengthComponent {
-  @Input() strength: string = '';
+  @Input() strength: any = 0;
+  strengthString: string = '';
+
+  getStrength(): number {
+    return this.strength = Number.parseInt(this.strength, 10);
+  }
+
+  getStrengthAsString(): string {
+    if (this.getStrength() === 0) {
+      this.strengthString = ''
+    } else if (this.getStrength() === 25) {
+      this.strengthString = 'Too Weak!';
+    } else if (this.getStrength() === 50) {
+      this.strengthString = 'Weak';
+    } else if (this.getStrength() === 75) {
+      this.strengthString = 'Medium'
+    } else {
+      this.strengthString = 'Strong'
+    }
+
+    return this.strengthString;
+  }
 
   getClassOf(): string {
-    if (this.strength === 'too weak!') {
+    if (this.getStrength() === 25) {
       return 'bg-red';
-    } else if (this.strength === 'weak') {
+    } else if (this.getStrength() === 50) {
       return 'bg-orange';
-    } else if (this.strength === 'medium') {
+    } else if (this.getStrength() === 75) {
       return 'bg-yellow';
     }
 
