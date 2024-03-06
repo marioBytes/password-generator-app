@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgFor } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { Clipboard } from '@angular/cdk/clipboard';
 
@@ -20,6 +21,7 @@ import { StrengthComponent } from './strength/strength.component';
     InputComponent,
     SliderComponent,
     StrengthComponent,
+    NgFor,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
@@ -30,6 +32,13 @@ export class AppComponent {
   password: string = '';
 
   charLength: string = '10';
+
+  passwordOptions = [
+    { name: 'includeUppercase', label: 'Include Uppercase Letters', checked: true },
+    { name: 'includeLowercase', label: 'Include Lowercase Letters', checked: true },
+    { name: 'includeNumbers', label: 'Include Numbers', checked: true },
+    { name: 'includeSymbols', label: 'Include Symbols', checked: false },
+  ];
 
   includeUpper: string = 'true';
   includeLower: string = 'true';
@@ -74,5 +83,12 @@ export class AppComponent {
 
   sliderOnChange(value: string) {
     this.charLength = value;
+  }
+
+  onCheck(value: any) {
+    const { target } = value;
+    const optionIndex = this.passwordOptions.findIndex((option) => option.name === target.name);
+
+    this.passwordOptions[optionIndex].checked = !this.passwordOptions[optionIndex].checked;
   }
 }

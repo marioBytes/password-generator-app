@@ -32,25 +32,14 @@
             <app-slider (onChange)="sliderOnChange($event)"></app-slider>
           </div>
           <div class="flex flex-col gap-3">
-            <app-checkbox
-              name="includeUpper"
-              label="Include Uppercase Letters"
-            ></app-checkbox>
-            <app-checkbox
-              name="includeLower"
-              label="Include Lowercase Letters"
-              checked
-            ></app-checkbox>
-            <app-checkbox
-              name="includeNumbers"
-              label="Include Numbers"
-              checked
-            ></app-checkbox>
-            <app-checkbox
-              name="includeSymbols"
-              label="Include Symbols"
-              checked
-            ></app-checkbox>
+            <li *ngFor="let option of passwordOptions" class="list-none">
+              <app-checkbox
+                [name]="option.name"
+                [label]="option.label"
+                [checked]="option.checked"
+                (onChange)="onCheck($event)"
+              ></app-checkbox>
+            </li>
           </div>
           <app-strength strength="{{ strength }}"></app-strength>
           <app-button (onClick)="generatePassword()"
