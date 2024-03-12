@@ -39,7 +39,6 @@ export class AppComponent {
   password: string = '';
 
   charLength: number = 10;
-  isValid: boolean = true;
 
   passwordOptions: PasswordOptions[] = [
     {
@@ -68,21 +67,32 @@ export class AppComponent {
     },
   ];
 
-  includeUpper: string = 'true';
-  includeLower: string = 'true';
-  includeNumbers: string = 'true';
-  includeSymbols: string = 'false';
-
   strength: number = 50;
 
   generatePassword(): string {
-    this.password = Array(this.charLength)
-      .fill(
-        '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz~!@-#$'
-      )
-      .map(function (x) {
-        return x[Math.floor(Math.random() * x.length)];
+    const passwordFill: string = this.passwordOptions
+      .map((option) => {
+        if (option.name === 'includeUppercase' && option.checked) {
+          return 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        }
+        if (option.name === 'includeLowercase' && option.checked) {
+          return 'abcdefghijklmnopqrstuvwxyz';
+        }
+        if (option.name === 'includeNumbers' && option.checked) {
+          return '0123456789';
+        }
+        if (option.name === 'includeSymbols' && option.checked) {
+          return '~!@-#$';
+        }
+
+        return '';
       })
+      .join('');
+
+    this.password = Array.from(
+      crypto.getRandomValues(new Uint32Array(this.charLength))
+    )
+      .map((x) => passwordFill[x % passwordFill.length])
       .join('');
 
     return this.password;
@@ -143,7 +153,7 @@ export class AppComponent {
 
   onCheck(value: any) {
     const { target } = value;
-    const optionIndex = this.getPasswordOptionIndexByName(target.name)
+    const optionIndex = this.getPasswordOptionIndexByName(target.name);
 
     this.passwordOptions[optionIndex].checked =
       !this.passwordOptions[optionIndex].checked;
@@ -156,7 +166,9 @@ export class AppComponent {
     const checkedOptions = this.getPasswordOptionsByCheckedValue(true);
 
     if (checkedOptions.length === 1) {
-      const disableOptionName = this.passwordOptions.find((option) => option.name === checkedOptions[0].name)!.name;
+      const disableOptionName = this.passwordOptions.find(
+        (option) => option.name === checkedOptions[0].name
+      )!.name;
       const optionIndex = this.getPasswordOptionIndexByName(disableOptionName);
 
       this.passwordOptions[optionIndex].disabled = true;
@@ -164,11 +176,16 @@ export class AppComponent {
   }
 
   private reenableOption() {
-    const disabledOptions = this.passwordOptions.find((option) => option.disabled === true);
-    const moreThanOneOptionSelected = this.getPasswordOptionsByCheckedValue(true);
+    const disabledOptions = this.passwordOptions.find(
+      (option) => option.disabled === true
+    );
+    const moreThanOneOptionSelected =
+      this.getPasswordOptionsByCheckedValue(true);
 
     if (disabledOptions && moreThanOneOptionSelected.length > 1) {
-      const optionIndex = this.getPasswordOptionIndexByName(disabledOptions.name);
+      const optionIndex = this.getPasswordOptionIndexByName(
+        disabledOptions.name
+      );
       this.passwordOptions[optionIndex].disabled = false;
     }
   }
@@ -178,6 +195,6 @@ export class AppComponent {
   }
 
   private getPasswordOptionIndexByName(value: string): number {
-    return this.passwordOptions.findIndex((option) => option.name === value)
+    return this.passwordOptions.findIndex((option) => option.name === value);
   }
 }
