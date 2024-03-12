@@ -34,8 +34,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://www.frontendmentor.io/solutions/password-generator-app-angular-tailwindcss-typescript-AqJRAPouBD)
-- Live Site URL: [Add live site URL here](https://password-generator-app-sage.vercel.app/)
+- Solution URL: [Frontend Mention Solution URL](https://www.frontendmentor.io/solutions/password-generator-app-angular-tailwindcss-typescript-AqJRAPouBD)
+- Live Site URL: [Password Generator Hosted on Vercel](https://password-generator-app-sage.vercel.app/)
 
 ## My process
 
