@@ -23,6 +23,11 @@ input[type='checkbox']:checked {
   border-color: #A4FFAF;
 }
 
+input[type='checkbox']:disabled {
+  background-color: #817D92;
+  border-color: #817D92;
+}
+
 input[type='checkbox']::after {
   transform: scale(1);
 }
